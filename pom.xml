@@ -11,6 +11,8 @@
 
     <modules>
         <module>Bdus1</module>
+        <module>Bdus2</module>
+        <module>Common</module>
     </modules>
 
     <properties>

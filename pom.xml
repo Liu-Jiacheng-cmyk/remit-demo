@@ -101,6 +101,13 @@
             <version>${mybatis.version}</version>
         </dependency>
 
+        <!-- MyBatis Generator 核心依赖 -->
+        <dependency>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-core</artifactId>
+            <version>1.4.0</version> <!-- 请使用最新版本 -->
+        </dependency>
+
         <!-- PostgreSQL Driver -->
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -184,5 +191,19 @@
                 <version>2.8.2</version> <!-- 更稳定的版本 -->
             </plugin>
         </plugins>
+        <pluginManagement>
+            <plugins>
+                <!-- MyBatis Generator 插件配置在父项目中，但不在此执行 -->
+                <plugin>
+                    <groupId>org.mybatis.generator</groupId>
+                    <artifactId>mybatis-generator-maven-plugin</artifactId>
+                    <version>1.4.0</version>
+                    <configuration>
+                        <verbose>true</verbose>
+                        <overwrite>true</overwrite>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
 </project>

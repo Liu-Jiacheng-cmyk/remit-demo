@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.mapper.CustomerAccountInfoPoMapper">
+<mapper namespace="org.example.bdus1.domain.mapper.CustomerAccountInfoPoMapper">
   <resultMap id="BaseResultMap" type="org.example.bdus1.domain.dao.po.CustomerAccountInfoPo">
     <!--
       WARNING - @mbg.generated
@@ -10,9 +10,7 @@
     <result column="customer_number" jdbcType="VARCHAR" property="customerNumber" />
     <result column="account_password" jdbcType="VARCHAR" property="accountPassword" />
     <result column="account_balance" jdbcType="NUMERIC" property="accountBalance" />
-    <result column="account_status
-" jdbcType="VARCHAR" property="accountStatus
-" />
+    <result column="account_status " jdbcType="VARCHAR" property="accountStatus " />
     <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
     <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
   </resultMap>
@@ -170,8 +168,7 @@
       <if test="accountBalance != null">
         account_balance,
       </if>
-      <if test="accountStatus
- != null">
+      <if test="accountStatus  != null">
         account_status
 ,
       </if>
@@ -195,8 +192,7 @@
       <if test="accountBalance != null">
         #{accountBalance,jdbcType=NUMERIC},
       </if>
-      <if test="accountStatus
- != null">
+      <if test="accountStatus  != null">
         #{accountStatus
 ,jdbcType=VARCHAR},
       </if>
@@ -237,8 +233,7 @@
       <if test="record.accountBalance != null">
         account_balance = #{record.accountBalance,jdbcType=NUMERIC},
       </if>
-      <if test="record.accountStatus
- != null">
+      <if test="record.accountStatus  != null">
         account_status
  = #{record.accountStatus
 ,jdbcType=VARCHAR},
@@ -289,8 +284,7 @@
       <if test="accountBalance != null">
         account_balance = #{accountBalance,jdbcType=NUMERIC},
       </if>
-      <if test="accountStatus
- != null">
+      <if test="accountStatus  != null">
         account_status
  = #{accountStatus
 ,jdbcType=VARCHAR},

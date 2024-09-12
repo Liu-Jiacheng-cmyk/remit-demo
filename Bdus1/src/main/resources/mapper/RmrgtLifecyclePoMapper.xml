@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.mapper.RmrgtLifecyclePoMapper">
+<mapper namespace="org.example.bdus1.domain.mapper.RmrgtLifecyclePoMapper">
   <resultMap id="BaseResultMap" type="org.example.bdus1.domain.dao.po.RmrgtLifecyclePo">
     <!--
       WARNING - @mbg.generated

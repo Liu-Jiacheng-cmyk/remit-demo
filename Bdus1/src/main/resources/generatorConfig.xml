@@ -10,12 +10,12 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="org.postgresql.Driver"
-                        connectionURL="jdbc:postgresql://localhost:5432/db_common"
+                        connectionURL="jdbc:postgresql://localhost:5432/db_bdus1"
                         userId="postgres"
                         password="123456">
         </jdbcConnection>
 
-        <javaModelGenerator targetPackage="org.example.common.domain.dao.po" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="org.example.bdus1.domain.dao.po" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
@@ -28,6 +28,8 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table tableName="tb_customer_info" domainObjectName="CustomerInfoPo" />
-    </context>
+        <table tableName="tb_customer_account_info" domainObjectName="CustomerAccountInfoPo" />
+        <table tableName="tb_rmrgt_lifecycle" domainObjectName="RmrgtLifecyclePo" />
+        <table tableName="tb_rmrgt_reg_in" domainObjectName="RmrgtRegInPo" />
+        <table tableName="tb_rmrgt_reg_out" domainObjectName="RmrgtRegOutPo" />    </context>
 </generatorConfiguration>

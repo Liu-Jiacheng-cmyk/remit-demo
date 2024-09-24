@@ -498,9 +498,6 @@
       <if test="zoneVal != null">
         zone_val = #{zoneVal,jdbcType=VARCHAR},
       </if>
-      <if test="optimisticLockVersion != null">
-        optimistic_lock_version = #{optimisticLockVersion,jdbcType=INTEGER},
-      </if>
       <if test="createdAt != null">
         created_at = #{createdAt,jdbcType=TIMESTAMP},
       </if>
@@ -509,7 +506,9 @@
       </if>
     </set>
     where remittance_id = #{remittanceId,jdbcType=VARCHAR}
+    and optimistic_lock_version = #{optimisticLockVersion,jdbcType=INTEGER}
   </update>
+
   <update id="updateByPrimaryKey" parameterType="org.example.bdus1.domain.dao.mdo.RmrgtRegInMdo">
     <!--
       WARNING - @mbg.generated
@@ -517,26 +516,28 @@
     -->
     update tb_rmrgt_reg_in
     set transaction_date = #{transactionDate,jdbcType=VARCHAR},
-      customer_number = #{customerNumber,jdbcType=VARCHAR},
-      debit_credit_code = #{debitCreditCode,jdbcType=CHAR},
-      sender_account = #{senderAccount,jdbcType=VARCHAR},
-      sender_name = #{senderName,jdbcType=VARCHAR},
-      sender_phone = #{senderPhone,jdbcType=VARCHAR},
-      sender_id = #{senderId,jdbcType=VARCHAR},
-      sender_address = #{senderAddress,jdbcType=VARCHAR},
-      currency_code = #{currencyCode,jdbcType=VARCHAR},
-      remittance_amount = #{remittanceAmount,jdbcType=NUMERIC},
-      fee_amount = #{feeAmount,jdbcType=NUMERIC},
-      recipient_name = #{recipientName,jdbcType=VARCHAR},
-      recipient_account = #{recipientAccount,jdbcType=VARCHAR},
-      recipient_phone = #{recipientPhone,jdbcType=VARCHAR},
-      recipient_address = #{recipientAddress,jdbcType=VARCHAR},
-      interbank_status_code = #{interbankStatusCode,jdbcType=VARCHAR},
-      remittance_note = #{remittanceNote,jdbcType=VARCHAR},
-      zone_val = #{zoneVal,jdbcType=VARCHAR},
-      optimistic_lock_version = #{optimisticLockVersion,jdbcType=INTEGER},
-      created_at = #{createdAt,jdbcType=TIMESTAMP},
-      updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+    customer_number = #{customerNumber,jdbcType=VARCHAR},
+    debit_credit_code = #{debitCreditCode,jdbcType=CHAR},
+    sender_account = #{senderAccount,jdbcType=VARCHAR},
+    sender_name = #{senderName,jdbcType=VARCHAR},
+    sender_phone = #{senderPhone,jdbcType=VARCHAR},
+    sender_id = #{senderId,jdbcType=VARCHAR},
+    sender_address = #{senderAddress,jdbcType=VARCHAR},
+    currency_code = #{currencyCode,jdbcType=VARCHAR},
+    remittance_amount = #{remittanceAmount,jdbcType=NUMERIC},
+    fee_amount = #{feeAmount,jdbcType=NUMERIC},
+    recipient_name = #{recipientName,jdbcType=VARCHAR},
+    recipient_account = #{recipientAccount,jdbcType=VARCHAR},
+    recipient_phone = #{recipientPhone,jdbcType=VARCHAR},
+    recipient_address = #{recipientAddress,jdbcType=VARCHAR},
+    interbank_status_code = #{interbankStatusCode,jdbcType=VARCHAR},
+    remittance_note = #{remittanceNote,jdbcType=VARCHAR},
+    zone_val = #{zoneVal,jdbcType=VARCHAR},
+    optimistic_lock_version = optimistic_lock_version + 1,
+    created_at = #{createdAt,jdbcType=TIMESTAMP},
+    updated_at = #{updatedAt,jdbcType=TIMESTAMP}
     where remittance_id = #{remittanceId,jdbcType=VARCHAR}
+    and optimistic_lock_version = #{optimisticLockVersion,jdbcType=INTEGER}
   </update>
+
 </mapper>

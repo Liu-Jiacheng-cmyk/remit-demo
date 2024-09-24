@@ -330,7 +330,9 @@
       </if>
     </set>
     where remittance_id = #{remittanceId,jdbcType=VARCHAR}
+    and optimistic_lock_version = #{optimisticLockVersion,jdbcType=INTEGER}
   </update>
+
   <update id="updateByPrimaryKey" parameterType="org.example.bdus1.domain.dao.mdo.RmrgtLifecycleMdo">
     <!--
       WARNING - @mbg.generated
@@ -338,14 +340,17 @@
     -->
     update tb_rmrgt_lifecycle
     set transaction_date = #{transactionDate,jdbcType=VARCHAR},
-      status_change_date = #{statusChangeDate,jdbcType=VARCHAR},
-      direction_code = #{directionCode,jdbcType=CHAR},
-      status_change_reason = #{statusChangeReason,jdbcType=VARCHAR},
-      currency_code = #{currencyCode,jdbcType=VARCHAR},
-      global_tracking_number = #{globalTrackingNumber,jdbcType=VARCHAR},
-      zone_val = #{zoneVal,jdbcType=VARCHAR},
-      created_at = #{createdAt,jdbcType=TIMESTAMP},
-      updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+    status_change_date = #{statusChangeDate,jdbcType=VARCHAR},
+    direction_code = #{directionCode,jdbcType=CHAR},
+    status_change_reason = #{statusChangeReason,jdbcType=VARCHAR},
+    currency_code = #{currencyCode,jdbcType=VARCHAR},
+    global_tracking_number = #{globalTrackingNumber,jdbcType=VARCHAR},
+    zone_val = #{zoneVal,jdbcType=VARCHAR},
+    created_at = #{createdAt,jdbcType=TIMESTAMP},
+    updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+    optimistic_lock_version = optimistic_lock_version + 1
     where remittance_id = #{remittanceId,jdbcType=VARCHAR}
+    and optimistic_lock_version = #{optimisticLockVersion,jdbcType=INTEGER}
   </update>
+
 </mapper>

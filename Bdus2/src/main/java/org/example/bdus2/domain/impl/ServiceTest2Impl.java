@@ -1,7 +1,7 @@
 package org.example.bdus2.domain.impl;
 
 import org.apache.dubbo.config.annotation.Service;
-import org.example.bdus2.domain.api.ServiceTest2;
+import org.example.bdus2.domain.Service.ServiceTest2;
 import org.springframework.stereotype.Component;
 
 @Service

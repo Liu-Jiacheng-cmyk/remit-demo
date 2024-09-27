@@ -10,7 +10,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>Bdus1</module>
+        <module>Rmrgt</module>
         <module>Bdus2</module>
         <module>Common</module>
         <module>Gateway</module>

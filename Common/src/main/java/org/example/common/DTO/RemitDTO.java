@@ -7,6 +7,12 @@ import java.math.BigDecimal;
 @lombok.Data
 public class RemitDTO {
     /**
+     * 汇款编号
+     */
+    @NotNull(message = "汇款编号不能为空")
+    private String remitNo;
+
+    /**
      * 付款账号
      */
     @NotNull(message = "付款账号不能为空")

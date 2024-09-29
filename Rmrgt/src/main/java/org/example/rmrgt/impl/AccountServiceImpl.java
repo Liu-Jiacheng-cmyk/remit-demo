@@ -1,7 +1,10 @@
 package org.example.rmrgt.impl;
 
 import org.example.common.DTO.RemitDTO;
+import org.example.common.exceptions.InsufficientBalanceException;
+import org.example.common.exceptions.InvalidPasswordException;
 import org.example.common.exceptions.TransferFailedException;
+import org.example.common.utils.ObjectUtils;
 import org.example.rmrgt.api.IAccountService;
 import org.example.rmrgt.dao.mdo.CustomerAccountInfoMdo;
 import org.example.rmrgt.mapper.CustomerAccountInfoMdoMapper;
@@ -33,22 +36,37 @@ public class AccountServiceImpl implements IAccountService {
 
     @Override
     public void valAccPwd(RemitDTO remitDTO) {
-        CustomerAccountInfoMdo account = customerAccountInfoMdoMapper.selectByPrimaryKey(remitDTO.getPayerNo());
-
+        CustomerAccountInfoMdo customerAccountInfoMdo =
+                customerAccountInfoMdoMapper.selectByPrimaryKey(remitDTO.getPayerNo());
+        if(ObjectUtils.isNull(customerAccountInfoMdo.getAccountPassword())
+                || !customerAccountInfoMdo.getAccountPassword().equals(remitDTO.getPayerPwd())){
+            throw new InvalidPasswordException("密码错误");
+        }
     }
 
     @Override
     public void valAccBala(RemitDTO remitDTO) {
-
+        CustomerAccountInfoMdo customerAccountInfoMdo =
+                customerAccountInfoMdoMapper.selectByPrimaryKey(remitDTO.getPayerNo());
+        if(ObjectUtils.isNull(customerAccountInfoMdo.getAccountBalance())
+                || (customerAccountInfoMdo.getAccountBalance().compareTo(remitDTO.getRemitAmount())<0)){
+            throw new InsufficientBalanceException("余额不足");
+        }
     }
 
     @Override
     public void debitAccBala(RemitDTO remitDTO) {
-
+        CustomerAccountInfoMdo customerAccountInfoMdo =
+                customerAccountInfoMdoMapper.selectByPrimaryKey(remitDTO.getPayerNo());
+        customerAccountInfoMdo.setAccountBalance(customerAccountInfoMdo.getAccountBalance().subtract(remitDTO.getRemitAmount()));
+        customerAccountInfoMdoMapper.updateByPrimaryKeySelective(customerAccountInfoMdo);
     }
 
     @Override
     public void creditAccBala(RemitDTO remitDTO) {
-
+        CustomerAccountInfoMdo customerAccountInfoMdo =
+                customerAccountInfoMdoMapper.selectByPrimaryKey(remitDTO.getPayerNo());
+        customerAccountInfoMdo.setAccountBalance(customerAccountInfoMdo.getAccountBalance().add(remitDTO.getRemitAmount()));
+        customerAccountInfoMdoMapper.updateByPrimaryKeySelective(customerAccountInfoMdo);
     }
 }

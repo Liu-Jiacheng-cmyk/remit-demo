@@ -5,7 +5,7 @@ import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
 @lombok.Data
-public class RemitDTO {
+public class RemitDTO extends BaseDTO {
     /**
      * 汇款编号
      */
@@ -48,5 +48,6 @@ public class RemitDTO {
      * 转账附言
      */
     private String remitRemarks;
+
 
 }

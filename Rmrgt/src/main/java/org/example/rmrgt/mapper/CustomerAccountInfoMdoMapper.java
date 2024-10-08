@@ -54,4 +54,6 @@ public interface CustomerAccountInfoMdoMapper {
      * @mbg.generated
      */
     int updateByPrimaryKey(CustomerAccountInfoMdo record);
+
+    CustomerAccountInfoMdo selectByPayeeNo(String accountNumber);
 }

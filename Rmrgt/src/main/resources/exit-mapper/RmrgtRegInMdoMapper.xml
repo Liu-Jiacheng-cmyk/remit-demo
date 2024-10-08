@@ -134,6 +134,10 @@
     from tb_rmrgt_reg_in
     where remittance_id = #{remittanceId,jdbcType=VARCHAR}
   </select>
+  <!-- 通过汇款编号查询入账记录 -->
+  <select id="selectByRemitNo" parameterType="java.lang.String" resultType="org.example.rmrgt.dao.mdo.RmrgtRegInMdo">
+    SELECT * FROM tb_rmrgt_reg_in WHERE remittance_id = #{remitNo}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     <!--
       WARNING - @mbg.generated

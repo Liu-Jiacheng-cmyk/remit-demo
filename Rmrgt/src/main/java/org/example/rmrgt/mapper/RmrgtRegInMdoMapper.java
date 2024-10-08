@@ -55,4 +55,7 @@ public interface RmrgtRegInMdoMapper {
      * @mbg.generated
      */
     int updateByPrimaryKey(RmrgtRegInMdo record);
+
+    RmrgtRegInMdo selectByRemitNo(String remitNo);
+
 }

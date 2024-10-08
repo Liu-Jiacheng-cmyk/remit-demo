@@ -6,6 +6,8 @@ public interface IAccountService {
 
     public String determineBdus(String accountNo);
 
+    public void valAccExists(RemitDTO remitDTO);
+
     public void valAccPwd(RemitDTO remitDTO);
 
     public void valAccBala(RemitDTO remitDTO);

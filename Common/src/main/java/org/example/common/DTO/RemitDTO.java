@@ -26,6 +26,12 @@ public class RemitDTO extends BaseDTO {
     private String payerPwd;
 
     /**
+     * 付款人姓名
+     */
+    @NotNull(message = "付款人姓名不能为空")
+    private String payerName;
+
+    /**
      * 收款人账号
      */
     @NotNull(message = "收款人账号不能为空")
@@ -37,6 +43,12 @@ public class RemitDTO extends BaseDTO {
      */
     @NotNull(message = "收款人姓名不能为空")
     private String payeeName;
+
+    /**
+     * 转账时间
+     */
+    @NotNull(message = "收款人姓名不能为空")
+    private String remitDate;
 
     /**
      * 转账金额

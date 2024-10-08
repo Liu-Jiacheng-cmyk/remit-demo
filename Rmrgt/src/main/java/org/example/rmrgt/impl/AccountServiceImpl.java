@@ -10,12 +10,16 @@ import org.example.rmrgt.dao.mdo.CustomerAccountInfoMdo;
 import org.example.rmrgt.mapper.CustomerAccountInfoMdoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class AccountServiceImpl implements IAccountService {
 
     @Autowired
     private CustomerAccountInfoMdoMapper customerAccountInfoMdoMapper;
+
+    @Autowired
+    private CustomerAccountInfoMdoMapper customerAccountInfoMapper;
 
     @Override
     public String determineBdus(String accountNo) {
@@ -31,6 +35,20 @@ public class AccountServiceImpl implements IAccountService {
             return "bdus2"; // 双数 -> bdus2
         } else {
             return "bdus1"; // 单数 -> bdus1
+        }
+    }
+
+    @Override
+    public void valAccExists(RemitDTO remitDTO) {
+        // 获取收款人账号
+        String payeeNo = remitDTO.getPayeeNo();
+
+        // 根据账号查询数据库，验证是否存在
+        CustomerAccountInfoMdo account = customerAccountInfoMapper.selectByPayeeNo(payeeNo);
+
+        // 如果查询结果为空，抛出异常
+        if (account == null) {
+            throw new TransferFailedException("收款人账户不存在: " + payeeNo);
         }
     }
 

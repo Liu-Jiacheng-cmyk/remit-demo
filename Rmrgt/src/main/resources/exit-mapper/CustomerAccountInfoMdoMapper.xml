@@ -218,6 +218,10 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
+  <!-- 通过收款人账号 (PayeeNo) 查询账户信息 -->
+  <select id="selectByPayeeNo" parameterType="java.lang.String" resultType="org.example.rmrgt.dao.mdo.CustomerAccountInfoMdo">
+    SELECT * FROM tb_customer_account_info WHERE payee_no = #{payeeNo}
+  </select>
   <update id="updateByExampleSelective" parameterType="map">
     <!--
       WARNING - @mbg.generated
